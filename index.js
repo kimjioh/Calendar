@@ -474,7 +474,7 @@ eventsContainer.addEventListener("click", (e) => {
             if (event.events.length === 0) {
                 eventsArr.splice(eventsArr.indexOf(event), 1);
 
-                const activeDayElem = document.querySelector(".dat.active");
+                const activeDayElem = document.querySelector(".day.active");
                 if(activeDayElem.classList.contains("event")) {
                     activeDayElem.classList.remove("event");
                 }
