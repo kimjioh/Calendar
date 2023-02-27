@@ -11,7 +11,6 @@ const calendar = document.querySelector('.calendar'),
       eventsContainer = document.querySelector(".events"),
       addEventSubmit = document.querySelector(".add-event-btn");
 
-
 let today = new Date();
 let activeDay;
 let month  = today.getMonth();
