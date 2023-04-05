@@ -31,38 +31,38 @@ const months = [
 "December",
 ];
 
-// let eventsArr = [
-//     {
-//         day: 24,
-//         month: 02,
-//         year: 2023,
-//         events: [
-//             {
-//                 title: "Event 1 lorem ipsun dolar sit genfa tersd dsad",
-//                 time: "10:30 AM",
-//             },
-//             {
-//                 title: "Event 2",
-//                 time: "11:30 AM",
-//             },
-//         ],
-//     },
-//     {
-//         day: 17,
-//         month: 02,
-//         year: 2023,
-//         events: [
-//             {
-//                 title: "밥",
-//                 time: "10:30 AM",
-//             },
-//             {
-//                 title: "Event 2",
-//                 time: "11:30 AM",
-//             },
-//         ],
-//     },
-// ];
+/* const eventsArr = [
+    {
+        day: 24,
+        month: 02,
+        year: 2023,
+        events: [
+            {
+                title: "Event 1 lorem ipsun dolar sit genfa tersd dsad",
+                time: "10:30 AM",
+            },
+            {
+                title: "Event 2",
+                time: "11:30 AM",
+            },
+        ],
+    },
+    {
+        day: 17,
+        month: 02,
+        year: 2023,
+        events: [
+            {
+                title: "밥",
+                time: "10:30 AM",
+            },
+            {
+                title: "Event 2",
+                time: "11:30 AM",
+            },
+        ],
+    }
+]; */
 
 let eventsArr = [];
 
@@ -92,27 +92,21 @@ function initCalendar() {
     };
 
     //current month days
-   
+
     for(let i = 1; i < lastDate; i++) {
 
         let event = false;
-        try{
-            eventsArr.forEach((eventObj) => {
-                if(
-                    eventObj.day === i &&
-                    eventObj.month === month + 1 &&
-                    eventObj.year === year
-    
-                ){
-                    event = true;
-                }
-            });
-    
-        }
-        catch(e){
-            return;
-        }
+        eventsArr.forEach((eventObj) => {
+            // console.log(eventObj);
+            if(
+                eventObj.day === i &&
+                eventObj.month === month + 1 &&
+                eventObj.year === year
 
+            ){
+                event = true;
+            }
+        });
 
         //if day is today add class today
         if(
@@ -497,17 +491,8 @@ function saveEvents() {
 }
 
 function getEvents() {
-
-    if(localStorage.getItem("events" === null)) {
+    if(localStorage.getItem("events" === null) || JSON.parse(localStorage.getItem("events")) === null) {
        return;
     }
-    
-    try {
-        eventsArr= [...eventsArr,JSON.parse(localStorage.getItem("events"))]
-        // eventsArr.push(...JSON.parse(localStorage.getItem("events")))
-    }
-    catch(e){
-        return;
-    }
-
+    eventsArr.push(...JSON.parse(localStorage.getItem("events")))
 }
